@@ -1,12 +1,9 @@
 import { Request,Response,NextFunction } from "express";
 import { InternalServerError } from "../utils/errors/app.error";
 import fs from 'fs';
+import logger from "../config/logger.config";
 const PingController=(req:Request,res:Response,next:NextFunction)=>{
-    try{
-        fs.readFileSync('/path/to/file');
-    }
-    catch(err){
-        throw new InternalServerError('File not found');
-    }
+   logger.info("Ping request received");
+   res.json({ message: "Pong" });
 }
 export default PingController;
